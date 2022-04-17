@@ -1,6 +1,6 @@
 export interface Pizza {
   name: string;
-  toppings?: any[];
+  toppings: string[];
   description: string;
   price: number;
 }
