@@ -1,12 +1,14 @@
 <mat-card>
   <mat-card-title>Login</mat-card-title>
-  <mat-card>
-    <mat-icon>face</mat-icon>
-    <span>You are currently logged in as <strong>Jonas</strong></span>
-  </mat-card>
+  <ng-container *ngIf="user$ | async as user">
+    <mat-card *ngIf="user.loggedIn">
+      <mat-icon>face</mat-icon>
+      <span>You are currently logged in as <strong>{{user.username}}</strong></span>
+    </mat-card>
+  </ng-container>
   <mat-form-field appearance="outline">
     <mat-label>Username *</mat-label>
-    <input matInput />
+    <input matInput #input />
   </mat-form-field>
-  <button mat-stroked-button color="primary">Login</button>
+  <button (click)="changeUser()" mat-stroked-button color="primary">Login</button>
 </mat-card>

@@ -5,10 +5,13 @@
   <a routerLink="pizzas" routerLinkActive="active"><mat-icon>local_pizza</mat-icon><span>Pizzas</span></a>
   <a routerLink="toppings" routerLinkActive="active"><mat-icon>interests</mat-icon><span>Toppings</span></a>
   <span class="spacer-3"></span>
-  <button class="user-button" mat-button [matMenuTriggerFor]="userMenu" aria-label="User menu">
-    <span>Jonas</span>
-    <mat-icon>expand_more</mat-icon>
-  </button>
+  <ng-container *ngIf="user$ | async as user">
+    <button *ngIf="user.loggedIn" class="user-button" mat-button [matMenuTriggerFor]="userMenu" aria-label="User menu">
+      <span>{{user.username}}</span>
+      <mat-icon>expand_more</mat-icon>
+    </button>
+    <button *ngIf="!user.loggedIn" routerLink="login" mat-button>Login</button>
+  </ng-container>
   <mat-menu #userMenu="matMenu">
     <button mat-menu-item (click)="changeUser()">
       <mat-icon>people</mat-icon>

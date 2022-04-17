@@ -7,6 +7,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderModule } from './header/header.module';
 import { UserModule } from './user/user.module';
 import { PizzaModule } from './pizza/pizza.module';
+import { StoreModule } from '@ngrx/store';
+import { userReducer } from './user/user.reducer';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,7 @@ import { PizzaModule } from './pizza/pizza.module';
     HeaderModule,
     UserModule,
     PizzaModule,
+    StoreModule.forRoot({ user: userReducer }),
   ],
   providers: [],
   bootstrap: [AppComponent]
