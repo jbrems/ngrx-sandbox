@@ -1,0 +1,29 @@
+mat-toolbar {
+  img {
+    height: 2em;
+    margin-right: 1em;
+  }
+
+  a {
+    display: flex;
+    align-items: center;
+    margin: 0 1em;
+    font-size: 0.8em;
+    font-weight: 400;
+    cursor: pointer;
+  }
+
+  .spacer-1 {
+    flex: 1;
+  }
+
+  .spacer-3 {
+    flex: 3;
+  }
+
+  .user-button {
+    span {
+      margin: 0 1em;
+    }
+  }
+}
