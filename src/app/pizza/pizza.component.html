@@ -1,0 +1,14 @@
+<mat-card *ngFor="let pizza of pizzas$ | async">
+  <mat-card-title>{{pizza.name}}</mat-card-title>
+  <mat-card-subtitle>{{pizza.description}}</mat-card-subtitle>
+  <mat-card-content>
+    <p>
+      <mat-icon>interests</mat-icon>
+      Toppings
+    </p>
+    <mat-chip-list>
+      <mat-chip *ngFor="let topping of pizza.toppings">{{topping}}</mat-chip>
+    </mat-chip-list>
+    <p><strong>{{pizza.price | currency:'EUR'}}</strong></p>
+  </mat-card-content>
+</mat-card>

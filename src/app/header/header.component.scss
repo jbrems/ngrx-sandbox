@@ -11,6 +11,8 @@ mat-toolbar {
     font-size: 0.8em;
     font-weight: 400;
     cursor: pointer;
+    text-decoration: none;
+    color: #fff;
   }
 
   .spacer-1 {
@@ -23,7 +25,15 @@ mat-toolbar {
 
   .user-button {
     span {
-      margin: 0 1em;
+      margin-right: 0.25em;
+    }
+
+    mat-icon {
+      margin: 0;
     }
   }
+}
+
+mat-icon {
+  margin-right: 0.25em;
 }

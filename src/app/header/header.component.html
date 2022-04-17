@@ -2,11 +2,10 @@
   <img src="https://ngrx.io/assets/images/badge.svg" alt="NgRx logo">
   <span>NgRx Sandbox</span>
   <span class="spacer-1"></span>
-  <a><mat-icon>local_pizza</mat-icon><span>Pizzas</span></a>
+  <a routerLink="pizzas" routerLinkActive="active"><mat-icon>local_pizza</mat-icon><span>Pizzas</span></a>
   <a><mat-icon>interests</mat-icon><span>Toppings</span></a>
   <span class="spacer-3"></span>
   <button class="user-button" mat-button [matMenuTriggerFor]="userMenu" aria-label="User menu">
-    <mat-icon>face</mat-icon>
     <span>Jonas</span>
     <mat-icon>expand_more</mat-icon>
   </button>
