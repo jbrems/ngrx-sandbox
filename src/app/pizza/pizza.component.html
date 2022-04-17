@@ -1,14 +1,51 @@
-<mat-card *ngFor="let pizza of pizzas$ | async">
-  <mat-card-title>{{pizza.name}}</mat-card-title>
-  <mat-card-subtitle>{{pizza.description}}</mat-card-subtitle>
+<ng-container *ngIf="!isAddingNewPizza">
+  <mat-card *ngFor="let pizza of pizzas$ | async">
+    <mat-card-title>{{pizza.name}}</mat-card-title>
+    <mat-card-subtitle>{{pizza.description}}</mat-card-subtitle>
+    <mat-card-content>
+      <p>
+        <mat-icon>interests</mat-icon>
+        Toppings
+      </p>
+      <mat-chip-list>
+        <mat-chip *ngFor="let topping of pizza.toppings">{{topping}}</mat-chip>
+      </mat-chip-list>
+      <p><strong>{{pizza.price | currency:'EUR'}}</strong></p>
+    </mat-card-content>
+  </mat-card>
+</ng-container>
+
+<mat-card *ngIf="isAddingNewPizza" id="new-pizza-form" [formGroup]="newPizzaForm">
+  <mat-card-title>Add new pizza</mat-card-title>
   <mat-card-content>
-    <p>
-      <mat-icon>interests</mat-icon>
-      Toppings
-    </p>
-    <mat-chip-list>
-      <mat-chip *ngFor="let topping of pizza.toppings">{{topping}}</mat-chip>
-    </mat-chip-list>
-    <p><strong>{{pizza.price | currency:'EUR'}}</strong></p>
+    <mat-form-field appearance="outline">
+      <mat-label>Name *</mat-label>
+      <input matInput />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Description *</mat-label>
+      <textarea matInput></textarea>
+    </mat-form-field>
+    <mat-form-field class="example-chip-list" appearance="outline">
+      <mat-label>Toppings *</mat-label>
+      <mat-chip-list #chipList aria-label="Video keywords" multiple formControlName="toppings">
+        <mat-chip
+        *ngFor="let topping of toppings"
+            [selected]="topping"
+            [value]="topping"
+            (removed)="removeTopping(topping)">
+            {{topping}}
+          </mat-chip>
+          <input
+          [matChipInputFor]="chipList"
+          (matChipInputTokenEnd)="addTopping($event)">
+        </mat-chip-list>
+      </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Price *</mat-label>
+      <input matInput type="number" />
+    </mat-form-field>
   </mat-card-content>
 </mat-card>
+
+<button (click)="addPizza()" mat-raised-button color="primary">Add pizza</button>

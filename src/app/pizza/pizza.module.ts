@@ -7,6 +7,7 @@ import { MatChipsModule } from '@angular/material/chips';
 import { ToppingsComponent } from './toppings/toppings.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -17,6 +18,7 @@ import { MatButtonModule } from '@angular/material/button';
   ],
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     MatCardModule,
     MatIconModule,
     MatChipsModule,
