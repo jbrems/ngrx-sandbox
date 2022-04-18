@@ -1,4 +1,8 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { addTopping } from '../pizza.actions';
 
 @Component({
   selector: 'app-toppings',
@@ -8,10 +12,10 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 export class ToppingsComponent implements OnInit {
   @ViewChild('input') input?: ElementRef;
 
-  toppings: string[];
+  toppings$: Observable<string[]>;
 
-  constructor() {
-    this.toppings = ['Cheese', 'Onions'];
+  constructor(private store: Store<{ pizza: { toppings: string[] } }>) {
+    this.toppings$ = this.store.select('pizza').pipe(map(state => state.toppings));
   }
 
   ngOnInit(): void {
@@ -19,7 +23,7 @@ export class ToppingsComponent implements OnInit {
 
   addTopping(): void {
     const newTopping = this.input?.nativeElement.value;
-    this.toppings = [...this.toppings, newTopping];
+    this.store.dispatch(addTopping({ topping: newTopping }));
   }
 
 }

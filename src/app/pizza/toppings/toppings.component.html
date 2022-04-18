@@ -2,7 +2,7 @@
   <mat-card-title>Toppings</mat-card-title>
   <mat-card-content>
     <mat-chip-list>
-      <mat-chip *ngFor="let topping of toppings">{{topping}}</mat-chip>
+      <mat-chip *ngFor="let topping of toppings$ | async">{{topping}}</mat-chip>
     </mat-chip-list>
     
     <p>

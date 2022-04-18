@@ -7,6 +7,7 @@ import { MatChipsModule } from '@angular/material/chips';
 import { ToppingsComponent } from './toppings/toppings.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { ReactiveFormsModule } from '@angular/forms';
 
 
@@ -24,6 +25,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatChipsModule,
     MatInputModule,
     MatButtonModule,
+    MatAutocompleteModule,
   ]
 })
 export class PizzaModule { }
